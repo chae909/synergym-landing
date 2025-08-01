@@ -37,12 +37,13 @@ const ProblemSection = () => {
                 <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
                     어쩌면, 당신의 노력은<br />몸을 향하고 있지 않았습니다.
                 </h2>
-                <p className="text-lg text-gray-400 max-w-3xl mx-auto mb-16 leading-relaxed">
+                <p className="text-xl text-gray-400 max-w-4xl mx-auto mb-8 leading-relaxed">
                     밤새워 공부한 뒤 찾아오는 목의 뻐근함, 중요한 프로젝트를 끝낸 후의 허리 통증. 
+                    <br />
                     우리는 때로 이런 불편함을 성실함의 <strong className="text-blue-400">'훈장'</strong>처럼 여겨왔습니다.
-                    <br /><br />
-                    사실 이것은 개인의 노력 문제가 아닙니다. 우리를 끊임없이 앉아있게 만드는 사회. 
-                    잠시 스트레칭으로 몸을 펴도, 다시 모니터 앞으로 돌아가야 하는 현실. 
+                </p>
+                <p className="text-lg text-gray-400 max-w-4xl mx-auto mb-16 leading-relaxed">
+                    우리를 끊임없이 앉아있게 만드는 사회. 잠시 스트레칭으로 몸을 펴도, 다시 모니터 앞으로 돌아가야 하는 현실. <br />
                     사회의 시스템을 당장 바꿀 수는 없지만, 그 안에서 우리 몸을 지키기 위한 노력은 시작할 수 있습니다.
                 </p>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
