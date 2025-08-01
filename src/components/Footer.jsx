@@ -6,7 +6,7 @@ const Footer = () => (
             <div className="flex flex-col md:flex-row justify-between items-center text-center md:text-left">
                 <div>
                     <h4 className="text-lg font-bold text-white">Synergym AI</h4>
-                    <p className="text-sm">Team Synerge: 채정윤, 정인우, 노지혜</p>
+                    <p className="text-sm">Team Synergy 채정윤, 정인우, 노지혜</p>
                 </div>
                 <div className="flex space-x-6 my-6 md:my-0">
                     <a href="#" className="hover:text-white transition">개인정보처리방침</a>
