@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 // 기존 이미지들을 import
 import uploadImg from '../../assets/upload.png';
 import analysisImg from '../../assets/analysis.png';
@@ -10,8 +10,34 @@ import recordImg from '../../assets/record.png';
 import emotionImg from '../../assets/emotion.png';
 import chartImg from '../../assets/chart.png';
 import commuImg from '../../assets/commu.png';
+import mobileVideo from '../../assets/mobile.mp4';
 
 const PreviewSection = () => {
+    const videoRef = useRef(null);
+
+    useEffect(() => {
+        const video = videoRef.current;
+        if (!video) return;
+
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        video.play().catch(console.error);
+                    } else {
+                        video.pause();
+                    }
+                });
+            },
+            { threshold: 0.3 } // 30% 보일 때 재생 시작
+        );
+
+        observer.observe(video);
+
+        return () => {
+            observer.disconnect();
+        };
+    }, []);
     const steps = [
         { 
             title: '촬영 및 분석', 
@@ -89,7 +115,7 @@ const PreviewSection = () => {
                             {/* 콘텐츠 영역 */}
                             <div className="relative z-10 p-8 flex flex-col justify-end h-full">
                                 {/* 텍스트 영역에 약한 blur 배경 */}
-                                <div className="bg-slate-800/40 backdrop-blur-[1px] rounded-xl p-6">
+                                <div className="bg-slate-800/60 backdrop-blur-[1px] rounded-xl p-6">
                                     <div className="text-blue-400 font-black text-6xl mb-4">
                                         0{i + 1}
                                     </div>
@@ -103,6 +129,33 @@ const PreviewSection = () => {
                             </div>
                         </div>
                     ))}
+                </div>
+                
+                {/* 모바일 비디오 섹션 */}
+                <div className="mt-16 flex justify-center">
+                    <div className="relative max-w-sm w-full">
+                        <video
+                            ref={videoRef}
+                            className="w-full h-auto rounded-2xl shadow-2xl shadow-blue-500/20"
+                            muted
+                            loop
+                            playsInline
+                            preload="metadata"
+                        >
+                            <source src={mobileVideo} type="video/mp4" />
+                            Your browser does not support the video tag.
+                        </video>
+                        
+                        {/* 비디오 설명 텍스트 */}
+                        <div className="mt-6 text-center">
+                            <h3 className="text-xl font-bold text-white mb-2">
+                                모바일에서 간편하게
+                            </h3>
+                            <p className="text-gray-300">
+                                언제 어디서나 쉽게 사용할 수 있는 모바일 앱
+                            </p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
